@@ -8,11 +8,11 @@ export default class LeagueSection extends React.Component{
             <div className="row">
                 <div className="col-sm-7">
                     <div className="demo-content1">
-                        <h3>IMPACT LEAGUE IS...</h3>
+                        <h2>IMPACT LEAGUE IS...</h2>
                         <p><strong>A month long online walk-o-run competition</strong></p>
                         <ul>
-                            <li> - Where employees form teams of 7 and compete to win the League cup.</li>
-                            <li> - All while raising funds for a cause sponsored by your company.</li>
+                            <li>Where employees form teams of 7 and compete to win the League cup.</li>
+                            <li>All while raising funds for a cause sponsored by your company.</li>
 
                         </ul>
                     </div>

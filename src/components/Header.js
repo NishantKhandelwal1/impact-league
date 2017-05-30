@@ -6,7 +6,7 @@ export default class Header extends React.Component{
       return (
         <div className="row">
                <header>
-                  <span>Impact League</span>
+                  <span><a href="#">Impact League</a></span>
                </header>
            </div>
 

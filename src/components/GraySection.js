@@ -14,8 +14,14 @@ export default class GraySection extends React.Component{
                 <div className="box">
                     <h3>5 kg</h3>
                     <p>Average weight loss of overweight players</p>
+                    <div className="h-box">
+
+                         <p>this is test data</p>
+
+                    </div>
                 </div>
-              
+
+
             </div>
 
 

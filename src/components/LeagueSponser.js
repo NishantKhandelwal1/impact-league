@@ -10,7 +10,7 @@ export default class LeagueSponser extends React.Component{
       <div className="row">
           <div className="col-sm-12">
               <div className="demo-content1">
-                  <h3>OUR PARTNERS</h3>
+                  <h2>OUR PARTNERS</h2>
                   <div className="col-sm-3 sponser">
                     <img className="img-responsive" src={Hero}  alt="sponser-hero"/>
                   </div>
