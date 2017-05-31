@@ -28,9 +28,9 @@ export default class LeagueForm extends React.Component{
     // Prepare form data for submitting it.
     var formData = {
       company: this.refs.company.value,
-      email: this.refs.email.value,
+      email_id: this.refs.email.value,
       name: this.refs.name.value,
-      phone: this.refs.phone.value,
+      phone_number: this.refs.phone.value,
     };
     fetch('http://dev.impactrun.com/api/enquire/', {
     method: 'POST',
@@ -38,7 +38,6 @@ export default class LeagueForm extends React.Component{
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(formData)
   })
