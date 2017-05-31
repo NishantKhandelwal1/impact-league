@@ -250,6 +250,18 @@ blockquote {
   padding-top: 40px;
   padding-bottom: 100px;
 }
+.success {
+    display: inline-block;
+    /* margin-left: 300px; */
+    color: green;
+    font-size: 20px;
+    opacity: 0.8;
+    /* margin-right: 0px; */
+    float: right;
+    margin-right: 30px;
+
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .gray-section {
         padding: 0px;
@@ -263,6 +275,7 @@ blockquote {
     ul{padding-left:20px;}
     ul li{font-size: 15px;}
     .demo-content1 h2{margin-left:0px;}
+
 
 }
 @media (max-width: 767px) {
@@ -282,6 +295,7 @@ blockquote {
     ul{padding-left:20px;}
     .demo-content1 h2{margin-left:0px;}
     ul li{font-size: 15px;}
+    .success{margin-top: 10px;}
 
 }
 /*--------------- fonts ------------------*/

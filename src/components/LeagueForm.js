@@ -7,12 +7,14 @@ export default class LeagueForm extends React.Component{
     super(props);
     this.state={
       type: 'info',
-     message: ''
+     message: '',
+     successmessage:''
     }
-
   }
 
+
   handleSubmit= (event) => {
+
     event.preventDefault();
     // Scroll to the top of the page to show the status message.
 
@@ -30,16 +32,27 @@ export default class LeagueForm extends React.Component{
       name: this.refs.name.value,
       phone: this.refs.phone.value,
     };
-    console.log(formData);
     fetch('http://dev.impactrun.com/api/enquire/', {
     method: 'POST',
+    mode: 'cors',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify(formData)
   })
+  .then((res) => { console.log(res) })
+.catch((res) =>{ console.log(res) })
 
+this.refs.company.value = null;
+this.refs.email.value = null;
+this.refs.name.value = null;
+this.refs.phone.value= null;
+
+this.setState({
+  successmessage:'Form Submitted Successfully..!!'
+})
 
   }
 
@@ -58,21 +71,21 @@ export default class LeagueForm extends React.Component{
                             <input className="form-control" name="name" ref="name" type="text" />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="email">Your email address</label>
-                            <input className="form-control" name="email" ref="email" required type="email" />
+                            <label htmlFor="email">Your email address <span style={{color:"red"}}>*</span></label>
+                            <input className="form-control" name="email" placeholder="jane.joe@example.com" ref="email" required type="email" />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="company">Your company *</label>
+                            <label htmlFor="company">Your company</label>
                             <input className="form-control" name="company" ref="company" type="text" />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="phone">Your phone number <span>*</span></label>
-                            <input className="form-control" name="phone" ref="phone" required type="phone" />
+                            <label htmlFor="phone">Your phone number <span style={{color:"red"}}>*</span></label>
+                            <input className="form-control" name="phone" ref="phone" placeholder="xxx-xxx-xxxx" required type="tel" pattern="^\d{3}\d{3}\d{4}$"/>
                           </div>
 
-
-                          <div className="form-group">
-                            <button className="btn btn-primary" type="submit">PARTNER WITH US</button>
+                          <div className="form-group ">
+                            <button className="btn btn-primary btn-enquire btn btn-lg btn-default" type="submit">PARTNER WITH US</button>
+                            <div className="success"><span>{this.state.successmessage}</span></div>
                           </div>
                         </form>
                   </div>
