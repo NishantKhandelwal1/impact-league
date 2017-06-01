@@ -13,7 +13,7 @@ export default class Banner extends React.Component{
                   <h1>ENGAGE EMPLOYEES WITH YOUR CSR&nbsp;MISSION.</h1>
               </div>
               <div className="banner-btn">
-              <a href="#enquire-form" className= "btn btn-primary btn-enquire btn btn-lg btn-default"> PARTNER WITH US</a>
+              <a href="#enquire-form" className="btn btn-primary btn-enquire btn btn-lg btn-default"> PARTNER WITH US</a>
               </div>
           </div>
           <div className="col-sm-7 pad0">

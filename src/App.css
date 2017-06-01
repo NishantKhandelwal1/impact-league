@@ -59,6 +59,12 @@ blockquote .small, blockquote footer, blockquote small {
     font-family: '';
 
 }
+.item blockquote {
+    padding: 33px 20px 10px 20px;
+}
+.content{
+  padding-top: 10px;
+}
 .demo-content h1 {
   font-family: montserratsemibold;
   color:rgba(0,0,0,0.69);
@@ -134,8 +140,9 @@ border-radius:5px;}
     border-radius: 5px;
     font-family: montserratregular;
     letter-spacing: 0.4;
-    min-height: 215px;
-    margin-bottom: 10px
+    min-height: 239px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 h3{
   font-family: montserratsemibold;
@@ -260,6 +267,21 @@ blockquote {
     float: right;
     margin-right: 30px;
 
+}
+.failure {
+    display: inline-block;
+    /* margin-left: 300px; */
+    color: red;
+    font-size: 20px;
+    opacity: 0.8;
+    /* margin-right: 0px; */
+    float: right;
+    margin-right: 30px;
+
+}
+.img-custom{
+  width: 100px;
+  height: 100px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

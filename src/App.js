@@ -8,6 +8,7 @@ import GraySection from './components/GraySection';
 import LeagueSection from './components/LeagueSection';
 import LeagueSponser from './components/LeagueSponser';
 
+
 class App extends Component {
 
   constructor(props){
@@ -20,6 +21,8 @@ class App extends Component {
     this.toggleModal= this.toggleModal.bind(this);
     this.handleSelect= this.handleSelect.bind(this);
   }
+
+
 handleSelect(selectedIndex, e){
     this.setState({
       index: selectedIndex,
@@ -50,6 +53,7 @@ handleSelect(selectedIndex, e){
           <div className="clearfix"></div>
 
           <LeagueForm />
+
         </div>
       </div>
     );
