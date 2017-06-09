@@ -11,8 +11,8 @@ export default class LeagueSection extends React.Component{
                         <h2>IMPACT LEAGUE IS...</h2>
                         <p><strong>A month long online walk-o-run competition</strong></p>
                         <ul>
-                            <li>Where employees form teams of 7 and compete to win the League cup (full-stop is not required here and elsewhere too)</li>
-                            <li>Raise funds for a social cause while running/walking and get fit (sponsored by your company would confuse employee+companies)</li>
+                            <li>Where employees form teams of 7 and compete to win the League cup</li>
+                            <li>Raise funds for a social cause while running/walking and get fit</li>
 
                         </ul>
                     </div>
