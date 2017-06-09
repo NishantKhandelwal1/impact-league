@@ -18,7 +18,7 @@ return (
                         <img className="img-circle img-custom" src={Vijay}  alt="img-keizgoesboom"/>
                     </div>
                     <div className="col-sm-9 content">
-                        <p id="text">As a support partner of Hero Impact League, Impact Run has done appreciable work. Their implementation team was always ready to support our employees at all times while project was running.Their employees are very professional and dedicated.</p>
+                        <p id="text">As a support partner of Hero Impact League, Impact Run has done appreciable work. Their implementation team was always ready to support our employees at all times while project was running. Their employees are very professional and dedicated.</p>
                         <small>Vijay Sethi (CSR head & CIO of Hero Motocorp)</small>
                     </div>
                 </div>
