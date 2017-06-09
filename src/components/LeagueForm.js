@@ -20,6 +20,11 @@ export default class LeagueForm extends React.Component{
     // Scroll to the top of the page to show the status message.
 
     this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
+    setTimeout(() => {
+                         this.setState({
+                         successmessage:''
+                         })
+                     }, 5000);
   }
 
 
@@ -96,7 +101,7 @@ export default class LeagueForm extends React.Component{
       </div>
       <div className="form-group">
       <label htmlFor="email">Your email address <span style={{color:"red"}}>*</span></label>
-      <input className="form-control" name="email" placeholder="jane.joe@example.com" ref="email" required type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" autoFocus title="must be alphanumeric and contains '@' , '.' "  />
+      <input className="form-control" name="email" placeholder="jane.joe@example.com" ref="email" required type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="must be alphanumeric and contains '@' , '.' "  />
       </div>
       <div className="form-group">
       <label htmlFor="company">Your company</label>
@@ -104,7 +109,7 @@ export default class LeagueForm extends React.Component{
       </div>
       <div className="form-group">
       <label htmlFor="phone">Your phone number <span style={{color:"red"}}>*</span></label>
-      <input className="form-control" name="phone" ref="phone" placeholder="xxx-xxx-xxxx" required type="tel" pattern="^\d{3}\d{3}\d{4}$" autoFocus title="must be numeric in 10 digits"/>
+      <input className="form-control" name="phone" ref="phone" placeholder="xxx-xxx-xxxx" required type="tel" pattern="^\d{3}\d{3}\d{4}$" title="must be numeric in 10 digits"/>
       </div>
 
       <div className="form-group ">

@@ -283,10 +283,16 @@ blockquote {
   width: 100px;
   height: 100px;
 }
-
+.demo-content1 {
+    padding-bottom: 20px;
+}
 @media (min-width: 768px) and (max-width: 991px) {
     .gray-section {
         padding: 0px;
+    }
+    .carousel-height{
+      height:50px;
+
     }
     .col-sm-8.pad0 {
         padding-right: 15px;
@@ -301,6 +307,17 @@ blockquote {
 
 }
 @media (max-width: 767px) {
+  .carousel-height{
+    height:450px;
+    padding-top: 0px;
+  }
+
+  span.glyphicon.glyphicon-chevron-right {
+    top: 38%;
+}
+span.glyphicon.glyphicon-chevron-left {
+    top: 38%;
+}
     .col-sm-8.pad0 {
         padding-right: 15px;
     }

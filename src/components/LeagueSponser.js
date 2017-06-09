@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from './../images/hero.jpg';
 import Cairn from './../images/cairn.jpg';
 import Barclays from './../images/barclays.jpg';
-import Aarti from './../images/aarti.jpg';
+import Aarti from './../images/Aartiupdated.png';
 
 export default class LeagueSponser extends React.Component{
   render(){

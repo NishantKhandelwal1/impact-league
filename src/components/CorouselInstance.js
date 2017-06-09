@@ -10,7 +10,7 @@ return (
   <Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
 
     <Carousel.Item>
-    <div className="box">
+    <div className="box carousel-height">
         <div className="item">
             <blockquote>
                 <div className="row">
@@ -29,7 +29,7 @@ return (
 
     </Carousel.Item>
     <Carousel.Item>
-    <div className="box">
+    <div className="box carousel-height">
         <div className="item">
             <blockquote>
                 <div className="row">
@@ -49,7 +49,7 @@ return (
     </div>
     </Carousel.Item>
     <Carousel.Item>
-    <div className="box">
+    <div className="box carousel-height">
         <div className="item">
             <blockquote>
                 <div className="row">
