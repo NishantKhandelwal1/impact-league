@@ -4,9 +4,12 @@
   "private": true,
   "dependencies": {
     "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.6.0",
     "react-bootstrap": "^0.31.0",
     "react-bootstrap-validation": "^0.1.11",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "jest": "^20.0.4",

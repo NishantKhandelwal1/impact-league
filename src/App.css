@@ -1,10 +1,27 @@
 
 
 /*------------------Custom CSS--------------*/
+
+
+
+
 * {
     margin: 0px;
     padding: 0px;
 }
+body, html, #root, #test {
+    height: 100%;
+
+}
+
+h4{
+  font-size:24;
+  font-family: montserratregular;
+}
+.appearance{
+  color:#4987a3;
+  }
+
 .container {
     max-width: 950px;
 }
@@ -168,14 +185,14 @@ top: 0;
   display : block;
 }
 
-.col-sm-4:first-child div {
+.col-sm-4:first-child div.box {
     background: #a339ff;
 }
 
-.col-sm-4:nth-child(2) div {
+.col-sm-4:nth-child(2) div.box {
     background: #ff9905;
 }
-.col-sm-4:last-child div {
+.col-sm-4:last-child div.box {
     background: #18c769;
 }
 /*.demo-content1 h3{
@@ -286,6 +303,32 @@ blockquote {
 .demo-content1 {
     padding-bottom: 20px;
 }
+
+.checkbox+.checkbox, .radio+.radio {
+    margin-top: 10px !important;
+}
+
+.btn-custom{
+  color:#ffffff;
+  font-family:montserratregular;
+  font-size:12px;
+  background-color:#d667cd;
+}
+
+.btn-custom:hover{
+
+    color:#ffffff;
+    font-family:montserratregular;
+    font-size:12px;
+    background-color:#d667cd;
+
+}
+.btn-custom:active:hover{
+  color:#ffffff;
+  font-family:montserratregular;
+  font-size:12px;
+  background-color:#d667cd;
+}
 @media (min-width: 768px) and (max-width: 991px) {
     .gray-section {
         padding: 0px;
@@ -303,7 +346,6 @@ blockquote {
     ul{padding-left:20px;}
     ul li{font-size: 15px;}
     .demo-content1 h2{margin-left:0px;}
-
 
 }
 @media (max-width: 767px) {

@@ -65,7 +65,7 @@ export default class LeagueForm extends React.Component{
         this.refs.phone.value= null;
 
         this.setState({
-            successmessage:'Error occured : Please call us on 9820988815',
+            successmessage:'Error occured : Please contact us on contact@impactrun.com',
             response: "failure"
         })
 
