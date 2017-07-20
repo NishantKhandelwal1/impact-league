@@ -116,7 +116,7 @@ export default class LeagueForm extends React.Component{
       <button className="btn btn-primary btn-enquire btn btn-lg btn-default" type="submit">PARTNER WITH US</button>
       <div className={this.state.response}><span id="test">{this.state.successmessage}</span></div>
       </div>
-      </form>
+      </form> 
       </div>
       </div>
       </div>

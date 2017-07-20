@@ -77,8 +77,8 @@ class LeaguePage extends Component {
     if(this.state.data != null){
 
       return(
-        <div style= {screenSize>="400"? sectionStyle:null }>
-              <div className="container-fluid" style= {screenSize<="400"? sectionStyle:null }>
+        <div style={screenSize>="400"? sectionStyle:null }>
+              <div className="container-fluid" style={screenSize<="400"? sectionStyle:null }>
                 <div className="container" >
                     <div className="row">
                         <header style={{background: "none"}}>
@@ -90,7 +90,7 @@ class LeaguePage extends Component {
                             <div className="col-md-7" >
                                 <div className="row" style={{margin:"10px",border: "6px solid #f5f5f5",borderRadius: "4px"}} >
 
-                                    <img id="leagueBanner" className="img-responsive" src={this.state.data.impactleague_banner} />
+                                    <img id="leagueBanner" alt="league-banner" className="img-responsive" src={this.state.data.impactleague_banner} />
                                 </div>
                             </div>
                             <div className="col-md-5">
@@ -132,7 +132,7 @@ class LeaguePage extends Component {
   }
 }
 //var re =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-var data;
+
 var selectedTeam;
 var defaultIndex = -1;
 class Registration extends Component {
@@ -147,7 +147,7 @@ constructor(props){
     error:null,
     showTextModel:false,
     display:"block",
-    display2:"block",
+    display2:"none",
     display3:"block",
     display4:"none",
     display5:"none",
@@ -220,7 +220,7 @@ showTeamTextInput2(){
     }
   }else{
     this.setState({
-      errorText:"Please fill out valid email id."
+      errorText:"Please fill out your official email id."
     })
       console.log("no email");
   }
@@ -276,14 +276,14 @@ renderTeam(){
     return(
       <div>
     <div className="form-group" style={{display:this.state.display2}}>
-        <input type="text" className="form-control" ref="team" placeholder="Enter your unique team name*" />
+        <input type="text" className="form-control" ref="team" placeholder="Your Team Name*" />
     </div>
     <div className="row">
     <div className="form-group col-sm-6 col-xs-6">
           <a href="#" className="btn btn-default" style={{display:this.state.display2}} onClick={()=> this.goBack()}>BACK</a>
     </div>
     <div className="form-group col-sm-6 col-xs-6" >
-          <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary " >SUBMIT</button>
+          <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary " >CREATE</button>
     </div>
     </div>
       </div>
@@ -297,7 +297,7 @@ renderTeam(){
         <div>
             <div className="form-group"  style={{display:this.state.display2}}>
 
-              <select ref="teamSelector" onChange={ (e) => {this.selectTeam();} } defaultValue ="-1" className="form-control">
+              <select ref="teamSelector" onChange={ (e) => {this.selectTeam();} } defaultValue="-1" className="form-control">
                  <option key="-1" value="-1" >Choose from existing teams</option>
               {teamList}
               </select>
@@ -307,7 +307,7 @@ renderTeam(){
                       <a href="#" className="btn btn-default" style={{display:this.state.display2}} onClick={()=> this.goBack()}>BACK</a>
                 </div>
                 <div className="form-group col-sm-6 col-xs-6">
-                      <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary" >SUBMIT</button>
+                      <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary" >JOIN</button>
                 </div>
             </div>
         </div>
@@ -443,6 +443,7 @@ renderTeam(){
 }
 
   render(){
+  let createImpact="Time to make an impact. Let's do it !";
 console.log("Data",this.state.data);
 clientHeight = screenSize >= 780?clientHeight+"px":"";
 console.log("clientHeight",clientHeight);
@@ -450,8 +451,11 @@ console.log("clientHeight",clientHeight);
   return(
 
     <div className="row" style ={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
-        <h4 className="appearance" style={{display:this.state.display3}}>Register here</h4>
-        <small className="appearance" style={{display:this.state.display3}}>Just Fill in your details,<br/>And you are good to go! Make an impact</small>
+        <h4 className="appearance" style={{display:this.state.display}}>Register here</h4>
+        <small className="appearance" style={{display:this.state.display}}>Just Fill in your details,<br/>Register as a Captain or a team member to get your secret code</small>
+        <br/>
+      <small className="appearance" style={{display:this.state.display}}>{createImpact}</small>
+        <small className="appearance" style={{display:this.state.display2}}>Special prizes for Coolest and Most Innovative team name.<br/>So give it a quick thought :)</small>
            <br/><span style={{color:"red"}}>{this.state.errorText}</span>
       <div className="row">
         <div className="col-md-12 col-sm-12 col-xs-12">
@@ -460,7 +464,7 @@ console.log("clientHeight",clientHeight);
                     <br style={{clear: "both"}}/>
                     <div className="row" style={{display:this.state.display}} >
                         <div className="form-group col-sm-6">
-                            <input type="text" className="form-control" ref="name" name="name" placeholder="Name*" required/>
+                            <input type="text" className="form-control" ref="name" name="name" placeholder="Full Name*" required/>
                         </div>
                         <div className="form-group col-sm-6">
                             <input type="phone" className="form-control" ref="mobile" name="mobile" placeholder="Mobile Number"/>
@@ -482,10 +486,10 @@ console.log("clientHeight",clientHeight);
                 </form>
             </div>
             <div style={{display:this.state.display4}}>
-              <h4 className="appearance">Welcome</h4>
-              <small className="appearance">You have successfully registered in the league. Here is the secret code which you need to enter in the ImpactRun app</small>
+              <h4 className="appearance">Awesome</h4>
+              <small className="appearance">We have created your team. Your secret code is </small>
               <br/>
-              <p className="appearance">{this.state.data === null?"":this.state.data.team_code}</p>
+              <span className="appearance" style={{fontSize:"18px",textAlign:"center"}}>{this.state.data === null?"":this.state.data.team_code}</span>
             </div>
             <div style={{display:this.state.display5}}>
               <h4 className="appearance">Welcome</h4>

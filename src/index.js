@@ -5,10 +5,9 @@ import './index.css';
 import LeaguePage from './components/leaguePage';
 import Example from './components/CountDownWidget';
 import {
-  NavLink,
   BrowserRouter as Router,
   Route,
-  Link
+
 } from 'react-router-dom';
 
  var path = "/impactleague/"
