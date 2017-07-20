@@ -91,9 +91,9 @@ export default class LeagueForm extends React.Component{
       <div className="row">
       <div className="col-sm-12">
       <div className="demo-content1">
-      <h2>COME PARTNER WITH US</h2>
+      <h2 id="enquire-form">COME PARTNER WITH US</h2>
 
-      <div id="enquire-form" className="form-wrap">
+      <div className="form-wrap">
       <form action="" onSubmit={this.handleSubmit}>
       <div className="form-group">
       <label htmlFor="name">Your full name </label>
@@ -116,7 +116,7 @@ export default class LeagueForm extends React.Component{
       <button className="btn btn-primary btn-enquire btn btn-lg btn-default" type="submit">PARTNER WITH US</button>
       <div className={this.state.response}><span id="test">{this.state.successmessage}</span></div>
       </div>
-      </form> 
+      </form>
       </div>
       </div>
       </div>
