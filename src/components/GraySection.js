@@ -30,7 +30,7 @@ export default class GraySection extends React.Component{
             <div className="col-sm-3 box-content">
                 <div className="box">
                     <h3 style={{textAlign:"center"}}>4X</h3>
-                    <p >Increase in profit per employee</p>
+                    <p >Increase in profit per employee due to employee engagement</p>
                 </div>
             </div>
 
