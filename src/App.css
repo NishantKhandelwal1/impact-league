@@ -71,6 +71,16 @@ blockquote .small, blockquote footer, blockquote small {
 
     color: #777;
 }
+small{
+      font-family: montserratregular;
+}
+.depend .form-group .form-control {
+  border-radius: 2px;
+  height:34px;
+  font-family:montserratregular;
+  font-size:10.6px;
+color:#90a1b5;
+}
 .item blockquote p:before {
     content: no-close-quote !important;
     font-family: '';

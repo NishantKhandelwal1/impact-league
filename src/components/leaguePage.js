@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import Background from './../images/Background.jpg';
 import AppStore from './../images/app-store-white.png';
 import GooglePlay from './../images/googleplay1.png';
+import ImpactLogo from './../images/logo_large.png';
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 //import Dropdown from './dropdown';
 var sectionStyle = {
@@ -25,15 +26,15 @@ var headerLogo = {
    fontFamily:"montserratsemibold"
  }
 
-
+var leagueURL;
 var clientHeight;
 var leagueData;
 class LeaguePage extends Component {
 
   constructor(props){
     super(props);
-    var path = window.location.pathname;
-    path = path.split("/");
+    leagueURL = window.location.pathname;
+  var path = leagueURL.split("/");
     path = path[2];
     this.fetchLeagueData(path);
     this.state={
@@ -77,11 +78,11 @@ class LeaguePage extends Component {
     if(this.state.data != null){
 
       return(
-        <div style={screenSize>="400"? sectionStyle:null }>
-              <div className="container-fluid" style={screenSize<="400"? sectionStyle:null }>
+        <div style={screenSize>"770"? sectionStyle:null }>
+              <div className="container-fluid" style={screenSize<="770"? sectionStyle:null }>
                 <div className="container" >
                     <div className="row">
-                        <header style={{background: "none"}}>
+                        <header style={{background: "none",paddingBottom: "20px"}}>
                             <span style={headerLogo}>{this.state.data.impactleague_name}</span>
                         </header>
                     </div>
@@ -94,7 +95,7 @@ class LeaguePage extends Component {
                                 </div>
                             </div>
                             <div className="col-md-5">
-                              <Registration league={this.state.data.id}/>
+                              <Registration {...this.state.data}/>
                             </div>
                         </div>
                         <div className="row" style={{margin:"10px"}}>
@@ -113,11 +114,13 @@ class LeaguePage extends Component {
                                     <a href="http://www.impactrun.com/#/AppDownload" ><img className="img-responsive"  src={GooglePlay} alt="Anroid-link"/></a>
                               </div>
                           </div>
-
+                          <div className="col-sm-12" style={{textAlign:"center"}}>
+                              <img src={ImpactLogo} alt="company-logo" style={{width:"200px"}}/>
+                          </div>
                         </div>
 
 
-                    <footer></footer>
+                  
                 </div>
             </div>
       </div>
@@ -151,6 +154,8 @@ constructor(props){
     display3:"block",
     display4:"none",
     display5:"none",
+    display6:"none",
+    display7:"none",
     data:null,
     errorText:'',
   }
@@ -159,7 +164,7 @@ constructor(props){
 
 componentDidMount(){
 clientHeight = document.getElementById('leagueBanner').clientHeight;
-console.log("League",this.props.league);
+console.log("League",this.props.id);
 this.renderTeamNames();
 
 }
@@ -176,6 +181,7 @@ showTeamTextInput(){
             showTextModel:true,
               display:"none",
               display2:"block",
+              display6:"block",
               errorText:""
           })
       }else{
@@ -210,6 +216,7 @@ showTeamTextInput2(){
           showTextModel:true,
           display:"none",
           display2:"block",
+          display7:"block",
             errorText:""
         })
     }else{
@@ -235,13 +242,16 @@ goBack(){
   this.setState({
     display:"block",
     display2:"none",
-    errorText:""
+    errorText:"",
+    display6:"none",
+    display7:"none"
+
   })
 }
 
 renderTeamNames(){
 
-            fetch('http://dev.impactrun.com/api/team/?impactleague='+ this.props.league, {
+            fetch('http://dev.impactrun.com/api/team/?impactleague='+ this.props.id, {
                     method: 'GET',
                 })
                 .then(response => (response.json()))
@@ -249,8 +259,6 @@ renderTeamNames(){
                   this.setState({
                       teamObject:response,
                     })
-
-
                 }).catch((err) => {
                     console.log("err", err);
                 })
@@ -259,10 +267,7 @@ renderTeamNames(){
 selectTeam(){
   console.log("Selected value",this.refs.teamSelector.value);
 
-    defaultIndex = this.refs.teamSelector.value;
-
-
-
+  defaultIndex = this.refs.teamSelector.value;
   let a = this.refs.teamSelector.value;
 if(a !== -1){
     selectedTeam = this.state.teamObject[a];
@@ -291,14 +296,14 @@ renderTeam(){
   }else{
     console.log(this.state.teamObject);
         var teamList = this.state.teamObject.map((options,index)=>{
-          return <option key={options.id} value={index}>{options.team_name}</option>
+          return <option key={options.id} value={index}>{`${options.team_name} | ${options.team_captain}`}</option>
         });
       return(
         <div>
             <div className="form-group"  style={{display:this.state.display2}}>
 
               <select ref="teamSelector" onChange={ (e) => {this.selectTeam();} } defaultValue="-1" className="form-control">
-                 <option key="-1" value="-1" >Choose from existing teams</option>
+                 <option key="-1" value="-1" >Choose a team to join</option>
               {teamList}
               </select>
             </div>
@@ -363,6 +368,7 @@ renderTeam(){
                 errorText:"",
                 display3:"none",
                 display4:"block",
+                display6:"none",
                 data:response
             })
             }).catch((err) => {
@@ -414,7 +420,8 @@ renderTeam(){
                   errorText:"",
                   display3:"none",
                   display5:"block",
-                  data:selectedTeam
+                  data:selectedTeam,
+                  display7:"none"
               })
                 }).catch((err) => {
                   console.log("err", err);
@@ -445,22 +452,23 @@ renderTeam(){
   render(){
   let createImpact="Time to make an impact. Let's do it !";
 console.log("Data",this.state.data);
+
 clientHeight = screenSize >= 780?clientHeight+"px":"";
 console.log("clientHeight",clientHeight);
-
   return(
 
     <div className="row" style ={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
         <h4 className="appearance" style={{display:this.state.display}}>Register here</h4>
-        <small className="appearance" style={{display:this.state.display}}>Just Fill in your details,<br/>Register as a Captain or a team member to get your secret code</small>
-        <br/>
+        <small className="appearance" style={{display:this.state.display}}>Just Fill in your details,<br/>Register as a Captain or a team member to get your secret code<br/><br/></small>
+
       <small className="appearance" style={{display:this.state.display}}>{createImpact}</small>
-        <small className="appearance" style={{display:this.state.display2}}>Special prizes for Coolest and Most Innovative team name.<br/>So give it a quick thought :)</small>
-           <br/><span style={{color:"red"}}>{this.state.errorText}</span>
+        <small className="appearance" style={{display:this.state.display6}}>Special prizes for the coolest and most innovative team name.<br/>So give it a quick thought :)</small>
+        <small className="appearance" style={{display:this.state.display7}}><br/>Pick your 'Team and Captain' from the drop-down below. Only 7 total members per team</small>
+        <span style={{color:"red"}}><br/>{this.state.errorText}</span>
       <div className="row">
         <div className="col-md-12 col-sm-12 col-xs-12">
-          <div className="form-area" style={{display:this.state.display3}}>
-                <form role="form" onSubmit={this.handleSubmit.bind(this)} >
+          <div className="form-area " style={{display:this.state.display3}}>
+                <form role="form" className="depend" onSubmit={this.handleSubmit.bind(this)} >
                     <br style={{clear: "both"}}/>
                     <div className="row" style={{display:this.state.display}} >
                         <div className="form-group col-sm-6">
@@ -486,19 +494,32 @@ console.log("clientHeight",clientHeight);
                 </form>
             </div>
             <div style={{display:this.state.display4}}>
-              <h4 className="appearance">Awesome</h4>
-              <small className="appearance">We have created your team. Your secret code is </small>
-              <br/>
-              <span className="appearance" style={{fontSize:"18px",textAlign:"center"}}>{this.state.data === null?"":this.state.data.team_code}</span>
+                <h4 className="appearance">Awesome !</h4>
+                <small className="appearance">We have created your team. Your secret code is <br/><br/>
+                <span className="appearance" style={{fontSize:"18px",fomtWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_code}</span>
+                <br/>Call 6 more to join your team using this <a href={leagueURL} style={{fontWeight:"bold",textDecoration:"underline" }}>link</a>
+                <br/>Once they register into your team, share the above code with them.
+                </small>
             </div>
-            <div style={{display:this.state.display5}}>
-              <h4 className="appearance">Welcome</h4>
-              <small className="appearance">You have successfully registered in the SuperHero League. Please ask secret code to the Captain which you need to enter in the ImpactRun app</small>
-              <br/>
-              <br/>
-              <span className="appearance">Captain Name: {this.state.data === null?"":this.state.data.team_captain}</span>
-              <br/>
-              <span className="appearance">Captain Mail id: {this.state.data === null?"":this.state.data.team_captain_email_id}</span>
+            <div className="col-sm-12" style={{display:this.state.display5}}>
+              <h4 className="appearance">Awesome !</h4>
+              <small className="appearance">
+              You have successfully registered for the league. Your Captain is <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain}</small>. <br/>Please ping <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain}</small> for your secret code at <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain_email_id}</small>
+              <br/>We begin on <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.props.start_date}</small>. Let&#39;s Go
+              <br/><div className="col-sm-6">
+                      <div className="row" style={{padding:"5px"}}>
+                          <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src="/static/media/app-store-white.50a7843d.png" alt="Apple-link" style={{height:"43px",width:"150px"}}/></a>
+                      </div>
+              </div>
+              <div className="col-sm-6">
+                      <div className="row" style={{padding:"5px"}}>
+                          <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src="/static/media/googleplay1.9abb3cfb.png" alt="Anroid-link" style={{height:"43px",width:"150px"}}/></a>
+                      </div>
+              </div>
+
+                <br/> May your Outdoor Jogs and Walks Win you the {this.props.impactleague_name}
+              </small>
+
             </div>
         </div>
 </div>
