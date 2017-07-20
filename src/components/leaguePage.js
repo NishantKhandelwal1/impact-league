@@ -115,12 +115,12 @@ class LeaguePage extends Component {
                               </div>
                           </div>
                           <div className="col-sm-12" style={{textAlign:"center"}}>
-                              <img src={ImpactLogo} alt="company-logo" style={{width:"200px"}}/>
+                              <img src={ImpactLogo} alt="company-logo" style={{width:"200px",padding:"10px"}}/>
                           </div>
                         </div>
 
 
-                  
+
                 </div>
             </div>
       </div>
@@ -164,14 +164,13 @@ constructor(props){
 
 componentDidMount(){
 clientHeight = document.getElementById('leagueBanner').clientHeight;
-console.log("League",this.props.id);
+
 this.renderTeamNames();
 
 }
 
 
 showTeamTextInput(){
-  console.log("League Data",leagueData);
     if(this.refs.email.value !=="" && this.refs.name.value !== ""){
       if(this.refs.email.value.substring(this.refs.email.value.lastIndexOf("@") +1) ===  leagueData.email_type ){
         if (this.refs.mobile.value.length === 10 || this.refs.mobile.value==="") {
@@ -265,14 +264,12 @@ renderTeamNames(){
 
 }
 selectTeam(){
-  console.log("Selected value",this.refs.teamSelector.value);
-
   defaultIndex = this.refs.teamSelector.value;
   let a = this.refs.teamSelector.value;
 if(a !== -1){
     selectedTeam = this.state.teamObject[a];
 }
-  console.log(selectedTeam);
+
 }
 
 renderTeam(){
@@ -294,7 +291,7 @@ renderTeam(){
       </div>
    );
   }else{
-    console.log(this.state.teamObject);
+
         var teamList = this.state.teamObject.map((options,index)=>{
           return <option key={options.id} value={index}>{`${options.team_name} | ${options.team_captain}`}</option>
         });
@@ -386,7 +383,6 @@ renderTeam(){
 
   }
   else{
-    console.log("value",defaultIndex);
 
       if(defaultIndex != -1){
         const formData = {
@@ -398,7 +394,33 @@ renderTeam(){
 
         }
 
+        function handleErrors(response) {
+            if (response.status === 406) {
+                this.setState({
+                  errorText: "Oops ! That team is full. Pick another one"
+                })
 
+                throw Error(response.statusText);
+            }
+            if (response.status === 400) {
+                this.setState({
+                  errorText: "Already registered"
+                })
+
+                throw Error(response.statusText);
+            }
+            if (response.status === 500) {
+                this.setState({
+                  errorText: "Error occured !! Please try again. "
+                })
+
+                throw Error(response.statusText);
+            }
+            if(response.status === 200 || response.status === 201){
+
+              return response.json();
+            }
+        }
 
     console.log("Data",formData);
         fetch('http://dev.impactrun.com/api/teammate/', {
@@ -410,7 +432,7 @@ renderTeam(){
                 },
                 body: JSON.stringify(formData)
             })
-            .then(response =>(response.json()))
+            .then(handleErrors.bind(this))
             .then((response) => {
 
               this.setState({
@@ -425,9 +447,6 @@ renderTeam(){
               })
                 }).catch((err) => {
                   console.log("err", err);
-                  this.setState({
-                    errorText:"Error occured !! Please try again"
-                  })
                 })
         // this.setState({
         //     display: "none",
@@ -451,10 +470,8 @@ renderTeam(){
 
   render(){
   let createImpact="Time to make an impact. Let's do it !";
-console.log("Data",this.state.data);
-
 clientHeight = screenSize >= 780?clientHeight+"px":"";
-console.log("clientHeight",clientHeight);
+
   return(
 
     <div className="row" style ={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
