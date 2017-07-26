@@ -438,7 +438,7 @@ span.glyphicon.glyphicon-chevron-left {
 }
 
 
-@media (max-width: 330px){
+@media (max-width: 360px){
   .btn-custom{
     font-size:7px;
   }
