@@ -18,7 +18,7 @@ backgroundImage: ' url(' + Background+')',
    backgroundSize: "cover"
 };
 var screenSize =  window.innerWidth;
-var buttonFont=screenSize <="360"?"12px": null;
+//var buttonFont=screenSize <="360"?"12px": null;
 
 var headerLogo = {
    fontSize :(screenSize <="400"? "19px":"36px"),
@@ -51,16 +51,16 @@ class LeaguePage extends Component {
   fetchLeagueData(leagueName){
 
     // var url = "https://api.myjson.com/bins/soslf";
-    var league =leagueName.toLowerCase();
-      console.log("leagueName",league);
-    var url = "http://dev.impactrun.com/impactleague/"+ leagueName;
+
+
+    var url = "http://dev.impactrun.com/impactleague/"+ leagueName.toLowerCase();
 
     fetch(url,{
       method:"get"
     })
     .then(response =>(response.json()))
     .then((response)=>{
-      console.log("response",response.results[0]);
+
       this.setState({
         data:response.results[0],
       })
@@ -173,7 +173,7 @@ this.renderTeamNames();
 showTeamTextInput(){
     if(this.refs.email.value !=="" && this.refs.name.value !== ""){
       if(this.refs.email.value.substring(this.refs.email.value.lastIndexOf("@") +1) ===  leagueData.email_type ){
-        if (this.refs.mobile.value.length === 10 || this.refs.mobile.value==="") {
+        if (this.refs.mobile.value==="" || this.refs.mobile.value.match(/^\d{10}$/)) {
 
           this.setState({
             Teamoption:"createTeam",
@@ -187,13 +187,13 @@ showTeamTextInput(){
         this.setState({
           errorText:"Please fill out valid number"
         })
-        console.log("no number");
+
       }
     }else{
       this.setState({
-        errorText:"Please fill out valid email id."
+        errorText:"Please fill out your official email id (impact@"+this.props.email_type + ")"
       })
-        console.log("no email");
+
     }
     }
     else{
@@ -204,11 +204,11 @@ showTeamTextInput(){
 
 }
 showTeamTextInput2(){
-
+console.log("impact@"+this.props.email_type);
 
   if(this.refs.email.value !=="" && this.refs.name.value !== ""){
     if(this.refs.email.value.substring(this.refs.email.value.lastIndexOf("@") +1) ===  leagueData.email_type ){
-      if (this.refs.mobile.value.length === 10 || this.refs.mobile.value==="") {
+      if (this.refs.mobile.value==="" || this.refs.mobile.value.match(/^\d{10}$/)) {
 
         this.setState({
           Teamoption:"JoinTeam",
@@ -222,13 +222,14 @@ showTeamTextInput2(){
       this.setState({
         errorText:"Please fill out valid number"
       })
-      console.log("no number");
+
     }
   }else{
+
     this.setState({
-      errorText:"Please fill out your official email id."
+      errorText:"Please fill out your official email id (impact@"+this.props.email_type + ")"
     })
-      console.log("no email");
+
   }
   }
   else{
@@ -293,7 +294,7 @@ renderTeam(){
   }else{
 
         var teamList = this.state.teamObject.map((options,index)=>{
-          return <option key={options.id} value={index}>{`${options.team_name} | ${options.team_captain}`}</option>
+          return options.team_captain === null ? "": <option key={options.id} value={index}>{`${options.team_name} | ${options.team_captain}`}</option>
         });
       return(
         <div>
@@ -384,7 +385,7 @@ renderTeam(){
   }
   else{
 
-      if(defaultIndex != -1){
+    if(defaultIndex != -1){
         const formData = {
           impactleague:9,
           team:selectedTeam.id,
@@ -474,9 +475,9 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
 
   return(
 
-    <div className="row" style ={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
-        <h4 className="appearance" style={{display:this.state.display}}>Register here</h4>
-        <small className="appearance" style={{display:this.state.display}}>Just Fill in your details,<br/>Register as a Captain or a team member to get your secret code<br/><br/></small>
+    <div className="row" style={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
+        <h4 className="appearance" style={{display:this.state.display}}>Impact League Registration</h4>
+        <small className="appearance" style={{display:this.state.display}}>Simply fill your details,<br/>Register as a Captain or a Team-member to get your secret code<br/><br/></small>
 
       <small className="appearance" style={{display:this.state.display}}>{createImpact}</small>
         <small className="appearance" style={{display:this.state.display6}}>Special prizes for the coolest and most innovative team name.<br/>So give it a quick thought :)</small>
@@ -500,7 +501,7 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
                     </div>
                     <div className="row" style={{display:this.state.display}}>
                         <div className="form-group col-sm-6 col-xs-6">
-                            <a href="javascript:void(0)" className="btn btn-custom " style={{width:"100%"}} onClick={()=> this.showTeamTextInput()}>CREATE TEAM</a>
+                            <a href="javascript:void(0)" className="btn btn-custom " style={{width:"100%"}} onClick={()=> this.showTeamTextInput()}> BECOME A CAPTAIN</a>
 
                         </div>
                         <div className="form-group col-sm-6 col-xs-6">
@@ -514,15 +515,15 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
                 <h4 className="appearance">Awesome !</h4>
                 <small className="appearance">We have created your team. Your secret code is <br/><br/>
                 <span className="appearance" style={{fontSize:"18px",fomtWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_code}</span>
-                <br/>Call 6 more to join your team using this <a href={leagueURL} style={{fontWeight:"bold",textDecoration:"underline" }}>link</a>
+                <br/>Call 6 more to join your team using this <a href={leagueURL} style={{fontWeight:"bold",textDecoration:"underline"}}>link</a>
                 <br/>Once they register into your team, share the above code with them.
                 </small>
             </div>
             <div className="col-sm-12" style={{display:this.state.display5}}>
               <h4 className="appearance">Awesome !</h4>
               <small className="appearance">
-              You have successfully registered for the league. Your Captain is <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain}</small>. <br/>Please ping <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain}</small> for your secret code at <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.state.data === null?"":this.state.data.team_captain_email_id}</small>
-              <br/>We begin on <small style={{fontWeight:"bold",textDecoration:"underline" }}>{this.props.start_date}</small>. Let&#39;s Go
+              You have successfully registered for the league. Your Captain is <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large>. <br/>Please ping <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large> for your secret code at <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain_email_id}</large>
+              <br/>We begin on <large style={{fontWeight:"bold"}}>{this.props.start_date}</large>. Let&#39;s Go
               <br/><div className="col-sm-6">
                       <div className="row" style={{padding:"5px"}}>
                           <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src="/static/media/app-store-white.50a7843d.png" alt="Apple-link" style={{height:"43px",width:"150px"}}/></a>
