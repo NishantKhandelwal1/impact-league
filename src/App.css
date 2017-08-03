@@ -416,6 +416,9 @@ box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
   margin-bottom: 30px;
   flex-direction: row;
 }
+.form-wrap-right .row .img-wrap{
+  margin-bottom: 10px;
+}
 .img-wrap a img{
   width:150px;
 

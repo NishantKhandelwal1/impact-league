@@ -103,7 +103,7 @@ class LeaguePage extends Component {
 
                         </div>
                         <div className="col-md-5 col-sm-6 col-xs-12">
-                            <div className="img-wrap" style={{display: "flex", justifyContent: "center",marginTop: "10px",alignItems: "center",marginBottom: "30px"}}>
+                            <div className="img-wrap">
                                 <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src={AppStore} alt="Apple-link" /></a>
                                 <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src={GooglePlay} alt="Anroid-link" /></a>
                             </div>
@@ -513,23 +513,22 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
                 </small>
             </div>
             <div className="col-sm-12" style={{display:this.state.display5}}>
-              <h4 className="appearance">Awesome !</h4>
-              <small className="appearance">
-              You have successfully registered for the league. Your Captain is <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large>. <br/>Please ping <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large> for your secret code at <large style={{fontWeight:"bold"}}>{this.state.data === null?"":"mailto:" +this.state.data.team_captain_email_id}</large>
-              <br/>We begin on <large style={{fontWeight:"bold"}}>{this.props.start_date}</large>. Let&#39;s Go
-              <br/>
-              <div className="img-wrap" >
+            <div className="row">
+            <h4 className="appearance">Awesome !</h4>
+            <small className="appearance">
+            You have successfully registered for the league. Your Captain is <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large>.
+            <br/>Please ping <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large> for your secret code at
+            <large style={{fontWeight:"bold"}}><a href={this.state.data === null?"":"mailto:" +this.state.data.team_captain_email_id}>{this.state.data === null?"":" "+this.state.data.team_captain_email_id}</a></large>
+            <br/>We begin on <large style={{fontWeight:"bold"}}>{this.props.start_date}</large>. Let&#39;s Go
+            <br/>
+            <div className="img-wrap" >
+                        <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src={AppStore} alt="Apple-link" style={{width:"125px"}}/></a>
+                        <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src={GooglePlay} alt="Anroid-link" style={{width:"125px"}}/></a>
+            </div>
 
-                          <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src="/static/media/app-store-white.82e0738d.png" alt="Apple-link" style={{width:"125px"}}/></a>
-
-
-
-                          <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src="/static/media/googleplay1.9abb3cfb.png" alt="Anroid-link" style={{width:"125px"}}/></a>
-
-              </div>
-
-                <br/> May your Outdoor Jogs and Walks Win you the {this.props.impactleague_name}
-              </small>
+              May your Outdoor Jogs and Walks Win you the {this.props.impactleague_name}
+            </small>
+            </div>
 
             </div>
         </div>
