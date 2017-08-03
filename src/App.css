@@ -49,8 +49,10 @@ header span {
   font-size: 36px;
   font-family: Arial;
   color:#4a90e2;
-  font-style: italic;
   font-weight: bold;
+}
+header span a{
+font-style:italic;
 }
 h1 {
   font-size: 32px !important;
@@ -325,26 +327,58 @@ blockquote {
 }
 
 .btn-custom{
-  color:#ffffff;
+  color: #fff;
+font-family: montserratregular;
+background-color: #d667cd;
+text-align: center;
+border-radius: 3px;
+display: flex;
+justify-content: center;
+text-decoration: none;
+box-shadow:0px 2px 12px rgba(0, 0, 0, 0.2);
+font-weight:900;
+padding:8px;
+font-size: 11px;
+  /*color:#ffffff;
   font-family:montserratregular;
-  font-size:12px;
+  font-size:11px;
   background-color:#d667cd;
+  box-shadow:2px 2px 8px rgba(0, 0, 0, 0.2);
+  font-weight: 900;*/
 }
 
 .btn-custom:hover{
-
     color:#ffffff;
     font-family:montserratregular;
-
     background-color:#d667cd;
+    text-decoration: none;
+      box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
 
+}
+.btn-custom:active{
+  box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
+}
+.btn-custom:focus{
+  box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
 }
 .btn-custom:active:hover{
   color:#ffffff;
   font-family:montserratregular;
-
+box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
   background-color:#d667cd;
 }
+.btn-custom:active{
+box-shadow: 1px 0px 7px 1px #b1afb0, 0 0 1px transparent;
+}
+.form-group a:hover {
+        color: #ffffff;
+        text-decoration:none;
+}
+.form-group a {
+        color: #ffffff;
+        text-decoration:none;
+}
+
 
 .flex-container {
   padding: 0;
@@ -374,7 +408,49 @@ blockquote {
   font-size: 3em;
   text-align: center;
 }
+.img-wrap{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-direction: row;
+}
+.img-wrap a img{
+  width:150px;
+
+}
+.img-wrap a:first-child img{
+  margin-right:10px;
+}
+
+.know-more{
+  min-height: 65.62px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#leagueBanner{
+  border: 5px solid #f5f5f5;
+  border-radius: 4px;
+  max-height: 352px;
+  box-shadow:0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.form-wrap-right{
+background-color:#f5f5f5;
+padding:25px 35px 0px 35px;
+min-height:352px;
+border-radius: 4px;
+box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.headerspan{
+  font-size :36px;
+  color:#ffffff;
+  font-family:montserratsemibold;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
+
     .gray-section {
         padding: 0px;
     }
@@ -399,8 +475,34 @@ blockquote {
     .flex-container{
       flex-wrap: wrap;
     }
+    #leagueBanner {
+    margin-bottom: 30px;
+    max-height: none;
 }
+}
+
 @media (max-width: 767px) {
+  .form-wrap-right{
+        padding: 15px 25px 9px;
+  }
+  .headerspan{
+    font-size :19px;
+    color:#ffffff;
+    font-family:montserratsemibold;
+  }
+
+  /*.img-wrap a:first-child img{
+    margin-bottom:30px;
+    margin-right:0px;
+  }*/
+  .img-wrap{
+  flex-direction:row;
+  margin-bottom:0px;
+  }
+  #leagueBanner{
+    margin-bottom:30px;
+    max-height: none;
+  }
   .carousel-height{
     height:450px;
     padding-top: 0px;
@@ -436,7 +538,11 @@ span.glyphicon.glyphicon-chevron-left {
     }
 
 }
-
+@media (min-height:400px) and (max-height) {
+  .headerspan {
+    fontSize :36px;
+  }
+}
 
 @media (max-width: 360px){
   .btn-custom{

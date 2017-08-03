@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 //import Select from 'react-select';
 import Background from './../images/Background.jpg';
-import AppStore from './../images/app-store-white.png';
-import GooglePlay from './../images/googleplay1.png';
+import AppStore from './../images/appStoreIcon.png';
+import GooglePlay from './../images/googleplayIcon.png';
 import ImpactLogo from './../images/logo_large.png';
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 //import Dropdown from './dropdown';
@@ -11,7 +11,6 @@ var sectionStyle = {
 backgroundImage: ' url(' + Background+')',
 /* Full height */
    height: "100%",
-
    /* Center and scale the image nicely */
    backgroundPosition: "center",
    backgroundRepeat: "no-repeat",
@@ -79,51 +78,45 @@ class LeaguePage extends Component {
 
       return(
         <div style={screenSize>"770"? sectionStyle:null }>
-              <div className="container-fluid" style={screenSize<="770"? sectionStyle:null }>
-                <div className="container" >
+            <div className="container-fluid" style={screenSize<="770" ? sectionStyle:null }>
+                <div className="container">
                     <div className="row">
-                        <header style={{background: "none",paddingBottom: "20px"}}>
-                            <span style={headerLogo}>{this.state.data.impactleague_name}</span>
-                        </header>
+                        <div className="col-md-12 col-xs-12">
+                            <header style={{background: "transparent",paddingBottom: "20px"}}>
+                                <span className="headerspan" >{this.state.data.impactleague_name}</span>
+                            </header>
+                        </div>
                     </div>
 
-                        <div className="row">
-                            <div className="col-md-7" >
-                                <div className="row" style={{margin:"10px",border: "6px solid #f5f5f5",borderRadius: "4px"}} >
+                    <div className="row" style={{marginBottom: "15px"}}>
+                        <div className="col-md-7">
+                            <img id="leagueBanner" alt="league-banner" className="img-responsive" src={this.state.data.impactleague_banner} />
+                        </div>
+                        <div className="col-md-5">
+                            <Registration {...this.state.data}/>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-7 col-sm-6 col-xs-12 know-more">
 
-                                    <img id="leagueBanner" alt="league-banner" className="img-responsive" src={this.state.data.impactleague_banner} />
-                                </div>
-                            </div>
-                            <div className="col-md-5">
-                              <Registration {...this.state.data}/>
+                            <small style={{color: "#90a1b5",fontFamily: "montserratregular"}}>To know more about the league click <a href="#">here.</a></small>
+
+                        </div>
+                        <div className="col-md-5 col-sm-6 col-xs-12">
+                            <div className="img-wrap" style={{display: "flex", justifyContent: "center",marginTop: "10px",alignItems: "center",marginBottom: "30px"}}>
+                                <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src={AppStore} alt="Apple-link" /></a>
+                                <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src={GooglePlay} alt="Anroid-link" /></a>
                             </div>
                         </div>
-                        <div className="row" style={{margin:"10px"}}>
-                          <div className="col-md-6" >
-                            <div className="row" style={{marginTop:"30px",textAlign:"center"}}>
-                                  <small style={{color:"#90a1b5",fontFamily:"montserratregular"}}>To know more about the league click <a href="#">here.</a></small>
-                            </div>
-                          </div>
-                          <div className="col-md-3 col-sm-6">
-                            <div className="row" style={{margin:"10px"}}>
-                              <a href="https://goo.gl/qJPjzb"><img className="img-responsive"  src={AppStore} alt="Apple-link" /></a>
-                            </div>
-                          </div>
-                          <div className="col-md-3 col-sm-6">
-                              <div className="row" style={{margin:"10px"}}>
-                                    <a href="http://www.impactrun.com/#/AppDownload" ><img className="img-responsive"  src={GooglePlay} alt="Anroid-link"/></a>
-                              </div>
-                          </div>
-                          <div className="col-sm-12" style={{textAlign:"center"}}>
-                              <img src={ImpactLogo} alt="company-logo" style={{width:"200px",padding:"10px"}}/>
-                          </div>
+
+                        <div className="col-md-12 col-sm-12 col-xs-12" style={{textAlign: "center"}}>
+                            <img src={ImpactLogo} alt="company-logo" style={{width: "200px",padding: "10px"}}/>
                         </div>
-
-
+                    </div>
 
                 </div>
             </div>
-      </div>
+        </div>
 );
     }else{
       return(
@@ -283,10 +276,10 @@ renderTeam(){
     </div>
     <div className="row">
     <div className="form-group col-sm-6 col-xs-6">
-          <a href="#" className="btn btn-default" style={{display:this.state.display2}} onClick={()=> this.goBack()}>BACK</a>
+          <a href="#" className="btn-custom" style={{display:this.state.display2,backgroundColor:"#ffffff",color:"#000000"}} onClick={()=> this.goBack()}>BACK</a>
     </div>
     <div className="form-group col-sm-6 col-xs-6" >
-          <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary " >CREATE</button>
+          <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",borderColor: "transparent"}} name="submit" className="btn-custom" >CREATE</button>
     </div>
     </div>
       </div>
@@ -307,10 +300,10 @@ renderTeam(){
             </div>
             <div className="row">
                 <div className="form-group col-sm-6 col-xs-6">
-                      <a href="#" className="btn btn-default" style={{display:this.state.display2}} onClick={()=> this.goBack()}>BACK</a>
+                      <a href="#" className="btn-custom" style={{display:this.state.display2,backgroundColor:"#ffffff",color:"#000000"}} onClick={()=> this.goBack()}>BACK</a>
                 </div>
                 <div className="form-group col-sm-6 col-xs-6">
-                      <button type="submit" id="submit" style={{display:this.state.display2,width:"100%",backgroundColor:"#d667cd"}} name="submit" className="btn btn-primary" >JOIN</button>
+                      <button type="submit" id="submit" style={{display:this.state.display2,width:"100%"}} name="submit" className="btn btn-custom" >JOIN</button>
                 </div>
             </div>
         </div>
@@ -475,7 +468,7 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
 
   return(
 
-    <div className="row" style={{backgroundColor:"#f5f5f5",padding:"15px",margin:"10px",minHeight:clientHeight,borderRadius: "4px"}}>
+    <div className="form-wrap-right">
         <h4 className="appearance" style={{display:this.state.display}}>Impact League Registration</h4>
         <small className="appearance" style={{display:this.state.display}}>Simply fill your details,<br/>Register as a Captain or a Team-member to get your secret code<br/><br/></small>
 
@@ -501,11 +494,11 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
                     </div>
                     <div className="row" style={{display:this.state.display}}>
                         <div className="form-group col-sm-6 col-xs-6">
-                            <a href="javascript:void(0)" className="btn btn-custom " style={{width:"100%"}} onClick={()=> this.showTeamTextInput()}> BECOME A CAPTAIN</a>
+                            <a href="javascript:void(0)" className="btn-custom " style={{width:"100%"}} onClick={()=> this.showTeamTextInput()}> BE A CAPTAIN</a>
 
                         </div>
                         <div className="form-group col-sm-6 col-xs-6">
-                            <a href="javascript:void(0)" className="btn btn-custom" onClick={()=> this.showTeamTextInput2()} style={{width:"100%"}}>JOIN TEAM</ a>
+                            <a href="javascript:void(0)" className="btn-custom" onClick={()=> this.showTeamTextInput2()} style={{width:"100%"}}>JOIN TEAM</ a>
                         </div>
                     </div>
   {this.renderTeam()}
@@ -522,17 +515,17 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
             <div className="col-sm-12" style={{display:this.state.display5}}>
               <h4 className="appearance">Awesome !</h4>
               <small className="appearance">
-              You have successfully registered for the league. Your Captain is <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large>. <br/>Please ping <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large> for your secret code at <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain_email_id}</large>
+              You have successfully registered for the league. Your Captain is <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large>. <br/>Please ping <large style={{fontWeight:"bold"}}>{this.state.data === null?"":this.state.data.team_captain}</large> for your secret code at <large style={{fontWeight:"bold"}}>{this.state.data === null?"":"mailto:" +this.state.data.team_captain_email_id}</large>
               <br/>We begin on <large style={{fontWeight:"bold"}}>{this.props.start_date}</large>. Let&#39;s Go
-              <br/><div className="col-sm-6">
-                      <div className="row" style={{padding:"5px"}}>
-                          <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src="/static/media/app-store-white.50a7843d.png" alt="Apple-link" style={{height:"43px",width:"150px"}}/></a>
-                      </div>
-              </div>
-              <div className="col-sm-6">
-                      <div className="row" style={{padding:"5px"}}>
-                          <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src="/static/media/googleplay1.9abb3cfb.png" alt="Anroid-link" style={{height:"43px",width:"150px"}}/></a>
-                      </div>
+              <br/>
+              <div className="img-wrap" >
+
+                          <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src="/static/media/app-store-white.82e0738d.png" alt="Apple-link" style={{width:"125px"}}/></a>
+
+
+
+                          <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src="/static/media/googleplay1.9abb3cfb.png" alt="Anroid-link" style={{width:"125px"}}/></a>
+
               </div>
 
                 <br/> May your Outdoor Jogs and Walks Win you the {this.props.impactleague_name}
