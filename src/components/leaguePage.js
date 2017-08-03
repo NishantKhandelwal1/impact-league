@@ -109,8 +109,8 @@ class LeaguePage extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-12 col-sm-12 col-xs-12" style={{textAlign: "center"}}>
-                            <img src={ImpactLogo} alt="company-logo" style={{width: "200px",padding: "10px"}}/>
+                        <div className="col-md-12 col-sm-12 col-xs-12" style={{textAlign: "center",minHeight:"91px"}}>
+                            <img src={ImpactLogo} alt="company-logo" style={{width: "170px"}}/>
                         </div>
                     </div>
 

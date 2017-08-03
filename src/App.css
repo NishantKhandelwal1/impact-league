@@ -478,6 +478,9 @@ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     .flex-container{
       flex-wrap: wrap;
     }
+.form-wrap-right{
+        padding: 25px 35px 35px 35px;
+      }
     #leagueBanner {
     margin-bottom: 30px;
     max-height: none;
@@ -500,7 +503,7 @@ box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   }*/
   .img-wrap{
   flex-direction:row;
-  margin-bottom:0px;
+  margin-bottom:30px;
   }
   #leagueBanner{
     margin-bottom:30px;
@@ -541,11 +544,7 @@ span.glyphicon.glyphicon-chevron-left {
     }
 
 }
-@media (min-height:400px) and (max-height) {
-  .headerspan {
-    fontSize :36px;
-  }
-}
+
 
 @media (max-width: 360px){
   .btn-custom{
