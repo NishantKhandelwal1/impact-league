@@ -101,6 +101,13 @@ color:#90a1b5;
 
 }
 
+.carousel-indicators .active{
+  background-color: transparent;
+}
+.carousel-indicators li{
+  border:none;
+}
+
 .banner-btn{
   margin-bottom: 20px;
 }

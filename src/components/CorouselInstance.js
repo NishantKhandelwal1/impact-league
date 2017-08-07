@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap/lib/';
 import Vijay from './../images/VijaySethi.jpg';
 import Satya from './../images/satya.jpg';
 import Pawan from './../images/pawankumar.jpeg';
+import Mirik from './../images/Mirik.JPG';
 
 const CarouselInstance =({index,direction,handleSelect})=> {
 
@@ -28,6 +29,28 @@ return (
 
     </div>
 
+    </Carousel.Item>
+    <Carousel.Item>
+    <div className="box carousel-height">
+        <div className="item">
+            <blockquote>
+                <div className="row">
+                    <div className="col-sm-3 text-center">
+
+                          <img className="img-circle img-custom"  src={Mirik}  alt="img-keizgoesboom"/>
+                    </div>
+                    <div className="col-sm-9 content">
+                    <p id="text">The concept of Impact league truly resonated with our Employees.
+                    We saw great participation across the organizational structure. The employees really liked the fact that their efforts were affecting the society in a positive manner.
+                    We are looking forward to Season 2 and hoping for even greater participation.</p>
+                    <small>Mirik Gogri (Manager, Aarti Industries)</small>
+
+                    </div>
+                </div>
+            </blockquote>
+        </div>
+
+    </div>
     </Carousel.Item>
     <Carousel.Item>
     <div className="box carousel-height">
