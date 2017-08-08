@@ -19,11 +19,11 @@ backgroundImage: ' url(' + Background+')',
 var screenSize =  window.innerWidth;
 //var buttonFont=screenSize <="360"?"12px": null;
 
-var headerLogo = {
-   fontSize :(screenSize <="400"? "19px":"36px"),
-   color:"#ffffff",
-   fontFamily:"montserratsemibold"
- }
+// var headerLogo = {
+//    fontSize :(screenSize <="400"? "19px":"36px"),
+//    color:"#ffffff",
+//    fontFamily:"montserratsemibold"
+//  }
 
 var leagueURL;
 var clientHeight;
@@ -65,7 +65,7 @@ class LeaguePage extends Component {
       })
         leagueData = this.state.data;
     }).catch((err)=>{
-      console.log("err",err);
+    //  console.log("err",err);
     })
   }
 
@@ -120,8 +120,8 @@ class LeaguePage extends Component {
 );
     }else{
       return(
-        <div>
-        <h2>Loading....</h2>
+        <div id="loader" style={{zIndex: "10000",position: "fixed", height: "100%", width: "100%", background: "white"}}>
+            <div className="loading"></div>
         </div>
       )
     }
@@ -197,8 +197,6 @@ showTeamTextInput(){
 
 }
 showTeamTextInput2(){
-console.log("impact@"+this.props.email_type);
-
   if(this.refs.email.value !=="" && this.refs.name.value !== ""){
     if(this.refs.email.value.substring(this.refs.email.value.lastIndexOf("@") +1) ===  leagueData.email_type ){
       if (this.refs.mobile.value==="" || this.refs.mobile.value.match(/^\d{10}$/)) {
@@ -253,7 +251,7 @@ renderTeamNames(){
                       teamObject:response,
                     })
                 }).catch((err) => {
-                    console.log("err", err);
+                    //console.log("err", err);
                 })
 
 }
@@ -363,7 +361,7 @@ renderTeam(){
                 data:response
             })
             }).catch((err) => {
-              console.log("err", err);
+            //  console.log("err", err);
 
             })
 
@@ -398,7 +396,7 @@ renderTeam(){
             }
             if (response.status === 400) {
                 this.setState({
-                  errorText: "Already registered"
+                  errorText: "The email address you have enterd is already registered"
                 })
 
                 throw Error(response.statusText);
@@ -416,8 +414,7 @@ renderTeam(){
             }
         }
 
-    console.log("Data",formData);
-        fetch('http://dev.impactrun.com/api/teammate/', {
+          fetch('http://dev.impactrun.com/api/teammate/', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -440,7 +437,7 @@ renderTeam(){
                   display7:"none"
               })
                 }).catch((err) => {
-                  console.log("err", err);
+                //  console.log("err", err);
                 })
         // this.setState({
         //     display: "none",
@@ -475,7 +472,7 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
       <small className="appearance" style={{display:this.state.display}}>{createImpact}</small>
         <small className="appearance" style={{display:this.state.display6}}>Special prizes for the coolest and most innovative team name.<br/>So give it a quick thought :)</small>
         <small className="appearance" style={{display:this.state.display7}}><br/>Pick your 'Team and Captain' from the drop-down below. Only 7 total members per team</small>
-        <span style={{color:"red"}}><br/>{this.state.errorText}</span>
+        <span style={{color:"red",fontFamily:"montserratregular"}}><br/>{this.state.errorText}</span>
       <div className="row">
         <div className="col-md-12 col-sm-12 col-xs-12">
           <div className="form-area " style={{display:this.state.display3}}>
@@ -522,8 +519,7 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
             <br/>We begin on <large style={{fontWeight:"bold"}}>{this.props.start_date}</large>. Let&#39;s Go
             <br/>
             <div className="img-wrap" >
-                        <a href="https://goo.gl/qJPjzb"><img className="img-responsive" src={AppStore} alt="Apple-link" style={{width:"125px"}}/></a>
-                        <a href="http://www.impactrun.com/#/AppDownload"><img className="img-responsive" src={GooglePlay} alt="Anroid-link" style={{width:"125px"}}/></a>
+                        <a href="http://www.onelink.to/impactrun" target="_blank" style={{fontWeight:"bold"}}>DOWNLOAD HERE</a>
             </div>
 
               May your Outdoor Jogs and Walks Win you the {this.props.impactleague_name}
