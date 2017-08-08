@@ -472,7 +472,7 @@ clientHeight = screenSize >= 780?clientHeight+"px":"";
       <small className="appearance" style={{display:this.state.display}}>{createImpact}</small>
         <small className="appearance" style={{display:this.state.display6}}>Special prizes for the coolest and most innovative team name.<br/>So give it a quick thought :)</small>
         <small className="appearance" style={{display:this.state.display7}}><br/>Pick your 'Team and Captain' from the drop-down below. Only 7 total members per team</small>
-        <span style={{color:"red",fontFamily:"montserratregular"}}><br/>{this.state.errorText}</span>
+        <span style={{color:"red",fontFamily:"montserratregular",fontSize:"12px"}}>{this.state.errorText}</span>
       <div className="row">
         <div className="col-md-12 col-sm-12 col-xs-12">
           <div className="form-area " style={{display:this.state.display3}}>
